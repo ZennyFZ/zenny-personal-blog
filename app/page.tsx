@@ -6,13 +6,13 @@ import { MusicPlayer } from "@/components/music-player";
 import { ProfileSection } from "@/components/profile-section";
 import { SkillsSection } from "@/components/skills-section";
 import { AboutSection } from "@/components/about-section";
-import { GalleryPreview } from "@/components/gallery-preview";
+// import { GalleryPreview } from "@/components/gallery-preview";
 import { ShopSection } from "@/components/shop-section";
 import { ContactSection } from "@/components/contact-section";
 import { AffLinksSection } from "@/components/aff-links-section";
 import { MysteryBoxSection } from "@/components/mystery-box-section";
 import { Footer } from "@/components/footer";
-import { playlist, featuredArtworks } from "@/data/content";
+import { playlist } from "@/data/content";
 import type { SparklePosition } from "@/types";
 
 export default function HomePage() {
@@ -60,7 +60,7 @@ export default function HomePage() {
           {/* Center Column */}
           <div className="lg:col-span-1 space-y-6">
             <AboutSection />
-            <GalleryPreview artworks={featuredArtworks} />
+            {/* <GalleryPreview artworks={featuredArtworks} /> */}
           </div>
 
           {/* Right Column */}

@@ -1,11 +1,8 @@
-import type { Track, Artwork, Skill } from "@/types"
+import type { Track, Artwork, Skill } from "@/types";
 
 export const playlist: Track[] = [
-  { title: "Kawaii Dreams", artist: "Pixel Princess", duration: "3:24" },
-  { title: "Neon Nights", artist: "Anime Beats", duration: "4:12" },
-  { title: "Cherry Blossom", artist: "Lo-fi Girl", duration: "2:58" },
-  { title: "Digital Love", artist: "Synth Wave", duration: "3:45" },
-]
+  { title: "Freesia", artist: "Rie Tanaka", duration: "4:28" },
+];
 
 export const featuredArtworks: Artwork[] = [
   {
@@ -36,7 +33,7 @@ export const featuredArtworks: Artwork[] = [
     image: "/placeholder.svg?height=200&width=200",
     colors: ["#191970", "#ff69b4", "#ffd700"],
   },
-]
+];
 
 export const allArtworks: Artwork[] = [
   {
@@ -143,7 +140,7 @@ export const allArtworks: Artwork[] = [
     dimensions: "1024x1024px",
     likes: 167,
   },
-]
+];
 
 export const skills: Skill[] = [
   // Frontend
@@ -173,4 +170,4 @@ export const skills: Skill[] = [
   { name: "Adobe After Effects", category: "design" },
   { name: "Magix Vegas", category: "design" },
   { name: "Format/Converter Software", category: "design" },
-]
+];

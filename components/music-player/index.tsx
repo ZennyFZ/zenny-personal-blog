@@ -126,7 +126,7 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
 
       <audio
         ref={audioRef}
-        src="/music/Waking_of_a_world.mp3"
+        src="/music/Freesia.mp3"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
