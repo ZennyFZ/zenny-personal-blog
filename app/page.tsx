@@ -9,7 +9,7 @@ import { AboutSection } from "@/components/about-section";
 // import { GalleryPreview } from "@/components/gallery-preview";
 import { ShopSection } from "@/components/shop-section";
 import { ContactSection } from "@/components/contact-section";
-import { AffLinksSection } from "@/components/aff-links-section";
+import { DumDumSection } from "@/components/dum-dum-section";
 import { MysteryBoxSection } from "@/components/mystery-box-section";
 import { Footer } from "@/components/footer";
 import { playlist } from "@/data/content";
@@ -18,7 +18,7 @@ import type { SparklePosition } from "@/types";
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState("");
   const [sparklePositions, setSparklePositions] = useState<SparklePosition[]>(
-    []
+    [],
   );
 
   useEffect(() => {
@@ -40,8 +40,15 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  const ChocolaBackground = "/Chocola.png";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 bg-top bg-cover"
+        style={{ backgroundImage: `url(${ChocolaBackground})` }}
+      />
+
       <BackgroundEffects sparklePositions={sparklePositions} />
 
       <div className="relative z-10 p-8 pt-12">
@@ -66,7 +73,7 @@ export default function HomePage() {
           {/* Right Column */}
           <div className="lg:col-span-1 space-y-6">
             <ContactSection />
-            <AffLinksSection />
+            <DumDumSection />
             <MysteryBoxSection />
           </div>
         </div>

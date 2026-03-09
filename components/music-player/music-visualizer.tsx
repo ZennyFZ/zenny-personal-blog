@@ -5,7 +5,7 @@ import { useRef, useEffect, useCallback } from "react";
 interface MusicVisualizerProps {
   isPlaying: boolean;
   analyser: AnalyserNode | null;
-  dataArray: Uint8Array | null;
+  dataArray: Uint8Array<ArrayBuffer> | null;
 }
 
 export function MusicVisualizer({
@@ -26,7 +26,7 @@ export function MusicVisualizer({
     const width = canvas.width;
     const height = canvas.height;
 
-    analyser.getByteFrequencyData(dataArray);
+    analyser.getByteFrequencyData(dataArray as Uint8Array<ArrayBuffer>);
 
     ctx.fillStyle = "rgba(255, 182, 193, 0.1)";
     ctx.fillRect(0, 0, width, height);
@@ -42,7 +42,7 @@ export function MusicVisualizer({
         0,
         height - barHeight,
         0,
-        height
+        height,
       );
       gradient.addColorStop(0, "#ff69b4");
       gradient.addColorStop(0.5, "#da70d6");

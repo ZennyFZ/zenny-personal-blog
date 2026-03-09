@@ -2,6 +2,7 @@
 
 import { Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 export function SkillsSection() {
   return (
@@ -11,9 +12,14 @@ export function SkillsSection() {
         {"Hiring me as a Developer?"}
       </h3>
       <div className="flex mb-3 gap-2">
-        <div className="underline text-blue-600">
+        <Link
+          href="https://github.com/ZennyFZ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-blue-600"
+        >
           Come here to see my skills
-        </div>
+        </Link>
       </div>
     </Card>
   );

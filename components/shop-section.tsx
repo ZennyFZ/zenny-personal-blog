@@ -1,7 +1,5 @@
 import { ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Link from "next/link";
 
 export function ShopSection() {
   return (
@@ -13,7 +11,7 @@ export function ShopSection() {
         </h2>
       </div>
       <div className="bg-white/80 p-4 rounded border-2 border-yellow-200 space-y-3">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm font-bold text-gray-700">
           {
             "I also run a digital shop to earn extra income! Here's what I offer:"
           }
@@ -21,26 +19,23 @@ export function ShopSection() {
         <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
           <li>{"Game keys for Steam, GOG, Microsoft, Epic, EA, Uplay"}</li>
           <li>{"Gacha recharge services"}</li>
-          <li>{"Software licenses (rarely)"}</li>
-          <li>{"Account subscriptions at discounted prices (rarely)"}</li>
-          <li>{"Gift cards (rarely)"}</li>
+          <li>{"Software licenses"}</li>
+          <li>{"Account subscriptions at discounted prices"}</li>
+          <li>{"Gift cards"}</li>
         </ul>
-        <div className="flex flex-col gap-2">
-          <Link
-            href="https://gameflip.com/profile/us-east-1:bd5ed527-53bf-462c-af10-ef02435ebce0/jenny"
-            target="_blank"
-          >
-            <Button className="w-full bg-gray-800 hover:bg-gray-700 text-white border-2 border-gray-600 pixel-shadow text-sm">
-              {"🛍️ Visit Gameflip"}
-            </Button>
-          </Link>
-
-          <Link href="https://difmark.com/en/profile/ZennyShop" target="_blank">
-            <Button className="w-full bg-green-400 hover:bg-green-500 text-white border-2 border-green-600 pixel-shadow text-sm">
-              {"🛍️ Visit Difmark"}
-            </Button>
-          </Link>
-        </div>
+        <p className="text-sm font-bold text-gray-700">
+          {
+            "shhh for personal reason, no public links available!! (˶˃ ᵕ ˂˶) buut i sell on:"
+          }
+        </p>
+        <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+          <li>Most keyshops on gg.deals</li>
+          <li>Marketplaces that are outside of gg.deals</li>
+          <li>Local/Native marketplaces</li>
+          <li>Social Networking Site</li>
+          <li>Forums</li>
+          <li>Buildinggg my own website. coming soon!</li>
+        </ul>
       </div>
     </Card>
   );

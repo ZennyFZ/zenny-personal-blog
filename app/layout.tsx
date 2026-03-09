@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "crossing field ✨",
+  title: "F r e e s i a",
   description: "Zenny Personal Blog",
 };
 

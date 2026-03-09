@@ -21,7 +21,7 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const dataArrayRef = useRef<Uint8Array | null>(null);
+  const dataArrayRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
 
   const setupAudioContext = () => {
     if (!audioRef.current || audioContextRef.current) return;
@@ -32,7 +32,9 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
 
     analyser.fftSize = 256;
     const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+    const dataArray: Uint8Array<ArrayBuffer> = new Uint8Array(
+      new ArrayBuffer(bufferLength),
+    );
 
     source.connect(analyser);
     analyser.connect(audioContext.destination);
@@ -95,9 +97,16 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
     }
   }, [isPlaying]);
 
+  const MusicBackground = "/Music_Background.png";
+
   return (
-    <Card className="mb-8 p-6 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 border-4 border-pink-300 pixel-shadow">
-      <div className="flex flex-col lg:flex-row gap-6 items-center">
+    <Card className="relative mb-8 p-6 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 border-4 border-pink-300 pixel-shadow overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35"
+        style={{ backgroundImage: `url(${MusicBackground})` }}
+      />
+
+      <div className="relative z-10 flex flex-col lg:flex-row gap-6 items-center">
         <MusicVisualizer
           isPlaying={isPlaying}
           analyser={analyserRef.current}
