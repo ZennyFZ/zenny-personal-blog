@@ -97,7 +97,7 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
     }
   }, [isPlaying]);
 
-  const MusicBackground = "/Music_Background.png";
+  const MusicBackground = "/MBack.png";
 
   return (
     <Card className="relative mb-8 p-6 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 border-4 border-pink-300 pixel-shadow overflow-hidden">
