@@ -40,18 +40,18 @@ export function ContactSection() {
           {"Discord"}
         </Button>
         <Button
+          className="w-full bg-gray-400 hover:bg-gray-500 text-white border-2 border-gray-600 pixel-shadow"
+          onClick={() => window.open("https://steamcommunity.com/id/Zenny_FZ/")}
+        >
+          <Image src="/Steam.png" alt="Steam Icon" width={16} height={16} />
+          {"Steam"}
+        </Button>
+        <Button
           className="w-full bg-red-400 hover:bg-red-500 text-white border-2 border-red-600 pixel-shadow"
           onClick={() => window.open("https://www.youtube.com/@Zennyy197")}
         >
           <Youtube />
           {"Visit my YouTube"}
-        </Button>
-        <Button
-          className="w-full bg-gray-400 hover:bg-gray-500 text-white border-2 border-gray-600 pixel-shadow"
-          onClick={() => window.open("https://steamcommunity.com/id/Zenny_FZ/")}
-        >
-          <Image src="/Steam.png" alt="Steam Icon" width={16} height={16} />
-          {"Visit my Steam"}
         </Button>
       </div>
     </Card>

@@ -18,6 +18,7 @@ export function ProfileSection() {
           {"Zenny"}
         </h1>
         <p className="text-purple-600 text-sm">{"Magic Engineer"}</p>
+        <p className="text-purple-600 text-sm">{"Pathstrider of Akivili"}</p>
       </div>
     </Card>
   );

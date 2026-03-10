@@ -17,7 +17,12 @@ export function AboutSection() {
         <p className="text-blue-800 mb-2">{"> Hello World! ✨"}</p>
         <p className="text-gray-700 mb-2">
           {
-            "I'm a front-end wizard with HTML, CSS, JavaScript, ReactJS, and NextJS in my spellbook. I moonlight as a backend and mobile dev when duty calls—Java, Express, ElysiaJS, SQL/NoSQL, you name it. Ahem, it's fullstuck."
+            "I'm a front-end wizard with HTML, CSS, JavaScript, ReactJS, and NextJS in my spellbook. I moonlight as a backend and mobile dev when duty calls—Java, Express, NestJS, ElysiaJS, SQL/NoSQL, you name it. Ahem, it's fullstuck."
+          }
+        </p>
+        <p className="text-gray-700 mb-2">
+          {
+            "Dock Dock! Who there? Docker! Docker who? Docker your apps with me and let's set sail on a smooth deployment journey! 🚢"
           }
         </p>
         <p className="text-gray-700 mb-2">

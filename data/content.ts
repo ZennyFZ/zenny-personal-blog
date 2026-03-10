@@ -1,4 +1,4 @@
-import type { Track, Artwork, Skill } from "@/types";
+import type { Track, Artwork, Skill, Project } from "@/types";
 
 export const playlist: Track[] = [
   { title: "Freesia", artist: "Rie Tanaka", duration: "4:28" },
@@ -139,6 +139,104 @@ export const allArtworks: Artwork[] = [
     tools: ["Adobe Illustrator", "Character Design"],
     dimensions: "1024x1024px",
     likes: 167,
+  },
+];
+
+export const Projects: Project[] = [
+  {
+    id: 1,
+    title: "DTCTranslation",
+    coverImage: "/projects/DTCTranslation.PNG",
+    description:
+      "A cozy little website where a translation team can upload their translated doujinshi for everyone to enjoy. Readers can browse, read, bookmark their favorites, and leave comments to share their thoughts. The site also lets users read manga from external sources right from the team’s website, making it a comfy place for manga lovers to hang out",
+    technologies: [
+      "ReactJS",
+      "NestJS",
+      "MongoDB",
+      "Vite",
+      "ShadCN UI",
+      "TailwindCSS",
+      "Typescript",
+    ],
+    link: "https://dtctranslation.moe/",
+    date: "2026-03-01",
+  },
+  {
+    id: 2,
+    title: "Tiệm Bánh Nhà Tèo",
+    coverImage: "/projects/TBNT.PNG",
+    description:
+      "An average and cute bakery landing page. Go ahead… order the croissant🥐",
+    technologies: ["NextJS", "ShadCN UI", "TailwindCSS", "Typescript"],
+    link: "https://tiem-banh-nha-teo.vercel.app",
+    date: "2025-12-05",
+  },
+  {
+    id: 3,
+    title: "ReselleyZ",
+    coverImage: "/projects/ResellyZ.PNG",
+    description:
+      "A mysterious little control panel created by the great witch Jenny. Its main purpose is to help Jenny with reselling adventures by providing all sorts of magical tools and helpful buttons. No one truly knows what every button does… but somehow it makes reselling empire run smoothly (and maybe a little chaotically).",
+    technologies: [
+      "NextJS",
+      "NestJS",
+      "PerplexityAI",
+      "MongoDB",
+      "ShadCN UI",
+      "TailwindCSS",
+      "Typescript",
+      "Javascript",
+    ],
+    link: "https://reselly-z-frontend.vercel.app",
+    date: "2025-11-30",
+  },
+  {
+    id: 4,
+    title: "Pixelated Princesses",
+    coverImage: "/projects/PP.PNG",
+    description:
+      "A chaotic little curator landing page for Chaos Princess, where she proudly displays her very serious (but actually dum dum) game reviews",
+    technologies: ["NextJS", "ShadCN UI", "TailwindCSS", "Typescript"],
+    link: "https://pixelated-princesses-of-chaos.vercel.app",
+    date: "2024-09-12",
+  },
+  {
+    id: 5,
+    title: "[Redacted] Website",
+    coverImage: "/projects/NVZ.PNG",
+    description:
+      "⚠️ Warning! Warning! ⚠️ This is a very suspiciously cultured manga website where users can read totally wholesome (definitely not questionable) hentai manga, chat and debate their refined tastes in the forums, and where the mysterious [Redacted] team secretly operates an admin panel to manage and upload their translated works",
+    technologies: [
+      "NextJS",
+      "ElysiaJS",
+      "MongoDB",
+      "ShadCN UI",
+      "TailwindCSS",
+      "Typescript",
+      "Javascript",
+    ],
+    type: "redacted",
+    date: "2025-02-06",
+  },
+  {
+    id: 6,
+    title: "SteamTradeBump",
+    coverImage: "/projects/STB.PNG",
+    description:
+      "A tiny piece of mysterious internet wizardry that magically makes a SteamTrades thread bump itself every hour. No one truly understands the dark arts behind it, just imagine a little goblin in the server room pressing the bump button every 60 minutes while whispering, 'stay at the top… stay at the top…'",
+    type: "no_demo",
+    technologies: ["NodeJS", "Javascript"],
+    date: "2024-05-28",
+  },
+  {
+    id: 7,
+    title: "KawaiiKeys",
+    coverImage: "/projects/KawaiiKeys.PNG",
+    description:
+      "Building my own tiny digital shop of goodies where I sell all sorts of fun stuff like game keys, gacha packages, software licenses, account subscriptions, and gift cards. It is basically a little treasure shop where you come in for one key and somehow leave with five other shiny things you didnt plan to buy",
+    technologies: ["Unknown"],
+    type: "coming_soon",
+    date: "2026-03-10",
   },
 ];
 

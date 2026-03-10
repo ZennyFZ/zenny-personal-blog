@@ -6,6 +6,7 @@ import { MusicPlayer } from "@/components/music-player";
 import { ProfileSection } from "@/components/profile-section";
 import { SkillsSection } from "@/components/skills-section";
 import { AboutSection } from "@/components/about-section";
+import { DiscordStatusSection } from "@/components/discord-status-section";
 // import { GalleryPreview } from "@/components/gallery-preview";
 import { ShopSection } from "@/components/shop-section";
 import { ContactSection } from "@/components/contact-section";
@@ -14,6 +15,7 @@ import { MysteryBoxSection } from "@/components/mystery-box-section";
 import { Footer } from "@/components/footer";
 import { playlist } from "@/data/content";
 import type { SparklePosition } from "@/types";
+import Image from "next/image";
 
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState("");
@@ -40,23 +42,37 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  const ChocolaBackground = "/Chocola.png";
+  const Background = "/HertaFaceless.png";
+  const MobileBackground = "/HFO.png";
+  const Sticker = "/TheHertaSticker.png";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 relative overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 bg-top bg-cover"
-        style={{ backgroundImage: `url(${ChocolaBackground})` }}
+        className="pointer-events-none absolute inset-0 bg-center bg-cover opacity-10 md:hidden"
+        style={{ backgroundImage: `url(${MobileBackground})` }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-top bg-cover opacity-10 hidden md:block"
+        style={{ backgroundImage: `url(${Background})` }}
       />
 
       <BackgroundEffects sparklePositions={sparklePositions} />
 
-      <div className="relative z-10 p-8 pt-12">
+      <Image
+        src={Sticker}
+        alt="Decorative sticker"
+        width={144}
+        height={144}
+        className="pointer-events-none absolute right-2 bottom-40 z-20 h-20 w-20 select-none md:bottom-28"
+      />
+
+      <div className="relative z-10 px-4 pb-24 pt-6 sm:px-6 sm:pt-8 sm:pb-28 md:p-8 md:pt-12 md:pb-8">
         <StatusBar currentTime={currentTime} />
         <MusicPlayer playlist={playlist} />
 
         {/* Main Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:gap-5 md:gap-6 lg:grid-cols-3">
           {/* Left Column */}
           <div className="lg:col-span-1 space-y-6">
             <ProfileSection />
@@ -67,7 +83,7 @@ export default function HomePage() {
           {/* Center Column */}
           <div className="lg:col-span-1 space-y-6">
             <AboutSection />
-            {/* <GalleryPreview artworks={featuredArtworks} /> */}
+            <DiscordStatusSection />
           </div>
 
           {/* Right Column */}

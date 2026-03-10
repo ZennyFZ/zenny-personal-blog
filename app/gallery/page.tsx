@@ -1,48 +1,70 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowLeft, Palette } from "lucide-react";
+import { ArrowLeft, Book } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArtworkModal } from "@/components/gallery/artwork-modal";
 import { BackgroundEffects } from "@/components/background-effects";
 import Link from "next/link";
-import { allArtworks } from "@/data/content";
-import type { Artwork, SparklePosition } from "@/types";
+import { Projects } from "@/data/content";
+import type { Project, SparklePosition } from "@/types";
 import Image from "next/image";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 export default function GalleryPage() {
-  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
-  const [filter, setFilter] = useState("All");
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
+    null,
+  );
 
-  const categories = [
-    "All",
-    "Digital Art",
-    "Illustration",
-    "Character Design",
-    "Background Art",
-  ];
-  const filteredArtworks =
-    filter === "All"
-      ? allArtworks
-      : allArtworks.filter((art) => art.category === filter);
+  const sortedProjects = [...Projects].sort((a, b) => {
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
+    return dateB - dateA;
+  });
 
-  // Generate sparkles for background
+  const selectedProject =
+    sortedProjects.find((project) => project.id === selectedProjectId) ?? null;
+
   const sparklePositions: SparklePosition[] = Array.from(
     { length: 20 },
     () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
       delay: Math.random() * 3,
-    })
+    }),
   );
+
+  const handleVisitWebsiteClick = (
+    project: Project,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
+    if (project.type === "redacted") {
+      event.preventDefault();
+      toast.error("Hidden by client :x");
+      return;
+    }
+
+    if (project.type === "coming_soon") {
+      event.preventDefault();
+      toast.error("This project is coming soon.");
+    }
+
+    if (project.type === "no_demo") {
+      event.preventDefault();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 relative overflow-hidden">
       <BackgroundEffects sparklePositions={sparklePositions} />
 
       <div className="relative z-10 p-8 pt-12">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-4 border-4 border-pink-300 pixel-shadow">
           <div className="flex items-center gap-4">
             <Link href="/">
@@ -51,107 +73,190 @@ export default function GalleryPage() {
                 size="sm"
                 className="border-2 border-pink-300 hover:bg-pink-100"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back Home
+                <ArrowLeft className="w-4 h-4" />
               </Button>
             </Link>
             <div>
               <h1 className="pixelated-font text-2xl font-bold text-purple-800">
-                {"My Artwork Gallery ✨"}
+                {"As I've Written"}
               </h1>
               <p className="text-sm text-purple-600">
-                {"Explore my creative journey through pixels and colors ♡"}
+                {"Let's pen the final stroke and end this story."}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Palette className="w-6 h-6 text-pink-500" />
+            <Book className="w-6 h-6 text-pink-500" />
             <span className="pixelated-font text-sm text-purple-700">
-              {allArtworks.length} Artworks
+              {sortedProjects.length} Projects
             </span>
           </div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 mb-8 justify-center">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={filter === category ? "default" : "outline"}
-              size="sm"
-              className={`${
-                filter === category
-                  ? "bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white border-2 border-pink-500"
-                  : "border-2 border-pink-300 hover:bg-pink-100"
-              } pixel-shadow`}
-              onClick={() => setFilter(category)}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {filteredArtworks.map((artwork) => (
-            <Card
-              key={artwork.id}
-              className="group bg-white/90 border-4 border-pink-300 pixel-shadow hover:border-purple-400 transition-all cursor-pointer hover:scale-105"
-              onClick={() => setSelectedArtwork(artwork)}
-            >
-              <div className="p-4">
-                <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg mb-3 overflow-hidden">
+          {sortedProjects.map((project) => {
+            const previewTechs = project.technologies.slice(0, 3);
+
+            return (
+              <Card
+                key={project.id}
+                className="group bg-white/90 border-4 border-pink-300 pixel-shadow hover:border-purple-400 transition-all hover:scale-[1.02]"
+              >
+                <div className="flex h-full flex-col p-4">
+                  <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg mb-3 overflow-hidden">
+                    <Image
+                      src={project.coverImage || "/placeholder.svg"}
+                      alt={project.title}
+                      width={300}
+                      height={300}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <div className="flex flex-1 flex-col space-y-3">
+                    <h3 className="pixelated-font text-sm font-bold text-purple-800 line-clamp-2">
+                      {project.title}
+                    </h3>
+
+                    <div>
+                      <p className="text-xs text-purple-700 line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {previewTechs.map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md border border-purple-300 bg-purple-100 px-2 py-1 text-[10px] font-semibold text-purple-700"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedProjectId(project.id)}
+                      className="h-8 border-2 border-purple-300 bg-white text-[10px] uppercase tracking-wide text-purple-700 hover:bg-purple-100"
+                    >
+                      Detail
+                    </Button>
+
+                    <div className="mt-auto flex items-center justify-between pt-1">
+                      {project.date && (
+                        <span className="text-xs text-gray-500">
+                          {project.date}
+                        </span>
+                      )}
+                      <Link
+                        href={project.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(event) =>
+                          handleVisitWebsiteClick(project, event)
+                        }
+                      >
+                        <Button
+                          size="sm"
+                          className="h-8 border-2 border-pink-400 bg-pink-500 px-3 text-[10px] uppercase tracking-wide text-white hover:bg-pink-600"
+                        >
+                          Visit Website
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedProjectId(null);
+          }
+        }}
+      >
+        <DialogContent className="max-w-2xl border-4 border-pink-300 bg-white/95">
+          {selectedProject && (
+            <div className="space-y-4">
+              <DialogHeader>
+                <DialogTitle className="pixelated-font text-xl text-purple-800">
+                  {selectedProject.title}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="grid gap-4 md:grid-cols-[180px_1fr]">
+                <div className="aspect-square overflow-hidden rounded-lg border-2 border-pink-200 bg-gradient-to-br from-pink-100 to-purple-100">
                   <Image
-                    src={artwork.image || "/placeholder.svg"}
-                    alt={artwork.title}
+                    src={selectedProject.coverImage || "/placeholder.svg"}
+                    alt={selectedProject.title}
                     width={300}
                     height={300}
+                    className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="pixelated-font text-sm font-bold text-purple-800 truncate">
-                      {artwork.title}
-                    </h3>
-                    {artwork.likes && (
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs text-pink-600">
-                          {artwork.likes}
-                        </span>
-                      </div>
-                    )}
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="mb-1 text-xs font-bold uppercase tracking-wide text-purple-700">
+                      Description
+                    </h4>
+                    <p className="text-sm leading-6 text-purple-800">
+                      {selectedProject.description}
+                    </p>
                   </div>
-                  <p className="text-xs text-purple-600">{artwork.category}</p>
-                  <div className="flex justify-between items-center">
-                    <div className="flex gap-1">
-                      {artwork.colors.slice(0, 3).map((color, i) => (
-                        <div
-                          key={i}
-                          className="w-3 h-3 rounded-full border border-white shadow-sm"
-                          style={{ backgroundColor: color }}
-                        />
+
+                  <div>
+                    <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-purple-700">
+                      Technologies
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-md border border-purple-300 bg-purple-100 px-2 py-1 text-xs font-semibold text-purple-700"
+                        >
+                          {tech}
+                        </span>
                       ))}
                     </div>
-                    {artwork.createdDate && (
-                      <span className="text-xs text-gray-500">
-                        {artwork.createdDate}
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>
-            </Card>
-          ))}
-        </div>
 
-        {/* Modal */}
-        {selectedArtwork && (
-          <ArtworkModal
-            artwork={selectedArtwork}
-            onClose={() => setSelectedArtwork(null)}
-          />
-        )}
-      </div>
+              <div className="flex items-center justify-between border-t border-pink-200 pt-3">
+                <span className="text-xs text-gray-500">
+                  {selectedProject.date || "No date"}
+                </span>
+                <Link
+                  href={selectedProject.link || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(event) =>
+                    handleVisitWebsiteClick(selectedProject, event)
+                  }
+                >
+                  <Button
+                    size="sm"
+                    className="h-8 border-2 border-pink-400 bg-pink-500 px-3 text-[10px] uppercase tracking-wide text-white hover:bg-pink-600"
+                  >
+                    Visit Website
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

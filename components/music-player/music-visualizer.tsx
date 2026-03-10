@@ -93,7 +93,7 @@ export function MusicVisualizer({
         <div className="text-center">
           <div className="text-2xl mb-1">🎵</div>
           <div className="pixelated-font text-xs text-purple-600">
-            {isPlaying ? "Now Playing ♡" : "Music Paused ✨"}
+            {isPlaying ? "Now Playing ♡" : "Music Paused"}
           </div>
         </div>
       </div>

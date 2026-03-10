@@ -7,7 +7,7 @@ export function ShopSection() {
       <div className="flex items-center gap-2 mb-4">
         <ShoppingBag className="w-5 h-5 text-yellow-600" />
         <h2 className="pixelated-font font-bold text-yellow-800">
-          {"My Little Shop ✨"}
+          {"My Little Shop"}
         </h2>
       </div>
       <div className="bg-white/80 p-4 rounded border-2 border-yellow-200 space-y-3">

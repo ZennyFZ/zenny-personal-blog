@@ -18,9 +18,17 @@ export function SkillsSection() {
           rel="noopener noreferrer"
           className="underline text-blue-600"
         >
-          Come here to see my skills
+          Come here to see my stats and projects!
         </Link>
       </div>
+
+      <Link
+        href="/gallery"
+        rel="noopener noreferrer"
+        className="underline text-pink-600"
+      >
+        Or here to see my project gallery too!
+      </Link>
     </Card>
   );
 }

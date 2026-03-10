@@ -1,29 +1,40 @@
 export interface Track {
-  title: string
-  artist: string
-  duration: string
+  title: string;
+  artist: string;
+  duration: string;
 }
 
 export interface Artwork {
-  id: number
-  title: string
-  category: string
-  image: string
-  colors: string[]
-  description?: string
-  createdDate?: string
-  tools?: string[]
-  dimensions?: string
-  likes?: number
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  colors: string[];
+  description?: string;
+  createdDate?: string;
+  tools?: string[];
+  dimensions?: string;
+  likes?: number;
+}
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  coverImage: string;
+  type?: string;
+  link?: string;
+  date?: string;
 }
 
 export interface Skill {
-  name: string
-  category: "frontend" | "backend" | "mobile" | "design"
+  name: string;
+  category: "frontend" | "backend" | "mobile" | "design";
 }
 
 export interface SparklePosition {
-  x: number
-  y: number
-  delay: number
+  x: number;
+  y: number;
+  delay: number;
 }

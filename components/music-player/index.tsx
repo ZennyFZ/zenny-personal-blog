@@ -98,11 +98,17 @@ export function MusicPlayer({ playlist }: MusicPlayerProps) {
   }, [isPlaying]);
 
   const MusicBackground = "/MBack.png";
+  const MusicBackgroundMobile = "/MBackMobile.png";
 
   return (
     <Card className="relative mb-8 p-6 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 border-4 border-pink-300 pixel-shadow overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35 md:hidden"
+        style={{ backgroundImage: `url(${MusicBackgroundMobile})` }}
+      />
+
+      <div
+        className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat opacity-35 md:block"
         style={{ backgroundImage: `url(${MusicBackground})` }}
       />
 
