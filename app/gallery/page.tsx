@@ -64,30 +64,30 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 relative overflow-hidden">
       <BackgroundEffects sparklePositions={sparklePositions} />
 
-      <div className="relative z-10 p-8 pt-12">
-        <div className="flex items-center justify-between mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-4 border-4 border-pink-300 pixel-shadow">
-          <div className="flex items-center gap-4">
+      <div className="relative z-10 px-4 pb-8 pt-8 sm:p-6 sm:pt-10 md:p-8 md:pt-12">
+        <div className="mb-6 flex flex-col gap-4 rounded-lg border-4 border-pink-300 bg-white/80 p-3 backdrop-blur-sm pixel-shadow sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+          <div className="flex w-full items-center gap-3 sm:w-auto sm:gap-4">
             <Link href="/">
               <Button
                 variant="outline"
                 size="sm"
-                className="border-2 border-pink-300 hover:bg-pink-100"
+                className="shrink-0 border-2 border-pink-300 hover:bg-pink-100"
               >
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             </Link>
-            <div>
-              <h1 className="pixelated-font text-2xl font-bold text-purple-800">
+            <div className="min-w-0">
+              <h1 className="pixelated-font text-lg font-bold leading-tight text-purple-800 sm:text-2xl">
                 {"As I've Written"}
               </h1>
-              <p className="text-sm text-purple-600">
+              <p className="text-xs text-purple-600 sm:text-sm">
                 {"Let's pen the final stroke and end this story."}
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Book className="w-6 h-6 text-pink-500" />
-            <span className="pixelated-font text-sm text-purple-700">
+          <div className="flex items-center gap-2 self-start rounded-md border-2 border-pink-200 bg-white/70 px-2 py-1 sm:self-auto">
+            <Book className="h-5 w-5 text-pink-500 sm:h-6 sm:w-6" />
+            <span className="pixelated-font text-xs text-purple-700 sm:text-sm">
               {sortedProjects.length} Projects
             </span>
           </div>
