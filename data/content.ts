@@ -198,7 +198,7 @@ export const Projects: Project[] = [
       "A chaotic little curator landing page for Chaos Princess, where she proudly displays her very serious (but actually dum dum) game reviews",
     technologies: ["NextJS", "ShadCN UI", "TailwindCSS", "Typescript"],
     link: "https://pixelated-princesses-of-chaos.vercel.app",
-    date: "2024-09-12",
+    date: "2025-09-12",
   },
   {
     id: 5,
@@ -226,7 +226,7 @@ export const Projects: Project[] = [
       "A tiny piece of mysterious internet wizardry that magically makes a SteamTrades thread bump itself every hour. No one truly understands the dark arts behind it, just imagine a little goblin in the server room pressing the bump button every 60 minutes while whispering, 'stay at the top… stay at the top…'",
     type: "no_demo",
     technologies: ["NodeJS", "Javascript"],
-    date: "2024-05-28",
+    date: "2025-05-28",
   },
   {
     id: 7,
