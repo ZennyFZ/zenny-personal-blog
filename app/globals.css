@@ -102,6 +102,59 @@
   }
 }
 
+/* Sakuga VFX controls (public/sakuga-vfx), themed to the blog's pink/purple palette */
+:root {
+  --sk-card: #ffffff;
+  --sk-ink: #6b21a8; /* purple-800, same as the section headings */
+  --sk-dim: #c084fc; /* purple-400 */
+  --sk-soft: #f9a8d4; /* pink-300 */
+  --sk-pri: #f472b6; /* pink-400, same as the blog's buttons */
+  --sk-on-pri: #ffffff;
+  --sk-acc: #ec4899; /* pink-500 */
+  --sk-fill: #f472b6;
+  --sk-track: #f3e8ff; /* purple-100 */
+  --sk-r: 8px;
+  --sk-bw: 3px;
+  --sk-sh: 4px 4px 0 rgba(0, 0, 0, 0.1), 8px 8px 0 rgba(0, 0, 0, 0.05); /* .pixel-shadow */
+  --sk-input-width: 100%;
+}
+
+/* Hide the raw light-DOM content until each script has defined its element */
+.sakuga-section :not(:defined) {
+  visibility: hidden;
+}
+
+.sakuga-section sakuga-input {
+  width: 100%;
+  max-width: 260px;
+}
+
+/* The toast keeps its 236x56 box while hidden, so let clicks pass through it */
+.sakuga-toast-dock {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+/* ...but keep the shown toast (and its close button) clickable; hidden it is visibility: hidden */
+.sakuga-toast-dock::part(toast) {
+  pointer-events: auto;
+}
+
+/* The tooltip reserves 60px above itself for the hint; in the card header the hint can overlap the content above */
+.sakuga-section sakuga-tooltip {
+  margin-top: 0;
+}
+
+/* The toggle's frames are painted in navy/lavender; nudge them toward the blog's purple.
+   It also reserves 89px above for the splash, which leaves a big gap in a small tile. */
+.sakuga-section sakuga-toggle {
+  margin-top: 64px;
+  filter: hue-rotate(28deg) saturate(1.15);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;

@@ -16,6 +16,13 @@ import { Footer } from "@/components/footer";
 import { playlist } from "@/data/content";
 import type { SparklePosition } from "@/types";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+// Client-only: the <sakuga-*> custom elements are defined by scripts loaded in the browser.
+const SakugaSection = dynamic(
+  () => import("@/components/sakuga-section").then((m) => m.SakugaSection),
+  { ssr: false },
+);
 
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState("");
@@ -93,6 +100,8 @@ export default function HomePage() {
             <MysteryBoxSection />
           </div>
         </div>
+
+        <SakugaSection />
 
         <Footer />
       </div>
