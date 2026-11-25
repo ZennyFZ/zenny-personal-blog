@@ -7,6 +7,7 @@ import { ProfileSection } from "@/components/profile-section";
 import { SkillsSection } from "@/components/skills-section";
 import { AboutSection } from "@/components/about-section";
 import { DiscordStatusSection } from "@/components/discord-status-section";
+import { DownloadSection } from "@/components/download-section";
 // import { GalleryPreview } from "@/components/gallery-preview";
 import { ShopSection } from "@/components/shop-section";
 import { ContactSection } from "@/components/contact-section";
@@ -91,6 +92,7 @@ export default function HomePage() {
           <div className="lg:col-span-1 space-y-6">
             <AboutSection />
             <DiscordStatusSection />
+            <DownloadSection />
           </div>
 
           {/* Right Column */}
