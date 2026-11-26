@@ -14,7 +14,7 @@ export function AboutSection() {
         </h2>
       </div>
       <div className="bg-white/80 p-4 rounded border-2 border-blue-200 font-mono text-sm">
-        <p className="text-blue-800 mb-2">{"> Hello World! ✨"}</p>
+        <p className="text-blue-800 mb-2">{"> Hello World!"}</p>
         <p className="text-gray-700 mb-2">
           {
             "I'm a front-end wizard with HTML, CSS, JavaScript, ReactJS, and NextJS in my spellbook. I moonlight as a backend and mobile dev when duty calls—Java, Express, NestJS, ElysiaJS, SQL/NoSQL, you name it. Ahem, it's fullstuck."
@@ -22,7 +22,7 @@ export function AboutSection() {
         </p>
         <p className="text-gray-700 mb-2">
           {
-            "Dock Dock! Who there? Docker! Docker who? Docker your apps with me and let's set sail on a smooth deployment journey! 🚢"
+            "Dock Dock! Who there? Docker! Docker who? Docker your apps with me and let's ship a smooth deployment!"
           }
         </p>
         <p className="text-gray-700 mb-2">

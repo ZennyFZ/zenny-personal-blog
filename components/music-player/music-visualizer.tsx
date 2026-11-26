@@ -91,7 +91,7 @@ export function MusicVisualizer({
       />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center">
-          <div className="text-2xl mb-1">🎵</div>
+          <div className="text-2xl mb-1">♪</div>
           <div className="pixelated-font text-xs text-purple-600">
             {isPlaying ? "Now Playing ♡" : "Music Paused"}
           </div>

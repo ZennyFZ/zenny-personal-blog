@@ -166,7 +166,7 @@ export const Projects: Project[] = [
     title: "Tiệm Bánh Nhà Tèo",
     coverImage: "/projects/TBNT.PNG",
     description:
-      "An average and cute bakery landing page. Go ahead… order the croissant🥐",
+      "An average and cute bakery landing page. Go ahead… order the croissant!",
     technologies: ["NextJS", "ShadCN UI", "TailwindCSS", "Typescript"],
     link: "https://tiem-banh-nha-teo.vercel.app",
     date: "2025-12-05",
@@ -205,7 +205,7 @@ export const Projects: Project[] = [
     title: "[Redacted] Website",
     coverImage: "/projects/NVZ.PNG",
     description:
-      "⚠️ Warning! Warning! ⚠️ This is a very suspiciously cultured manga website where users can read totally wholesome (definitely not questionable) hentai manga, chat and debate their refined tastes in the forums, and where the mysterious [Redacted] team secretly operates an admin panel to manage and upload their translated works",
+      "[!] Warning! Warning! [!] This is a very suspiciously cultured manga website where users can read totally wholesome (definitely not questionable) hentai manga, chat and debate their refined tastes in the forums, and where the mysterious [Redacted] team secretly operates an admin panel to manage and upload their translated works",
     technologies: [
       "NextJS",
       "ElysiaJS",

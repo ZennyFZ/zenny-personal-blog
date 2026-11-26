@@ -41,8 +41,8 @@ type SakugaEl = HTMLElement & {
 
 const MOODS: Record<string, string> = {
   sleepy: "zZz... 5 more minutes (－_－) zzZ",
-  gaming: "Dailies first, then gacha~ 🎲",
-  coding: "Fullstuck mode: ON 💻",
+  gaming: "Dailies first, then gacha~",
+  coding: "Fullstuck mode: ON [dev]",
 };
 
 const GAMES: Record<string, string> = {
@@ -129,7 +129,7 @@ export function SakugaSection() {
         return;
       }
       sendRef.current?.done?.();
-      toast(`Hiii ${name}! ✨`);
+      toast(`Hiii ${name}!`);
     });
     on(clearRef.current, "click", () => {
       if (nameRef.current) nameRef.current.value = "";
@@ -146,7 +146,7 @@ export function SakugaSection() {
     });
     on(radioRef.current, "change", () => {
       const game = GAMES[radioRef.current?.value ?? ""];
-      if (game) toast(`Fellow ${game} enjoyer! 🤝`);
+      if (game) toast(`Fellow ${game} enjoyer!`);
     });
     on(ratingRef.current, "change", () => {
       const stars = Number(ratingRef.current?.value ?? 0);
@@ -154,7 +154,7 @@ export function SakugaSection() {
       else if (stars > 0) toast(`${stars} star${stars > 1 ? "s" : ""}, noted~`);
     });
     on(checkboxRef.current, "change", () => {
-      if (checkboxRef.current?.checked) toast("Pinky promise! 💗");
+      if (checkboxRef.current?.checked) toast("Pinky promise! <3");
     });
 
     // A pretend load that fills in surges.
@@ -197,7 +197,7 @@ export function SakugaSection() {
 
   const sleepinessNote =
     sleepiness > 70
-      ? "Need coffee ☕"
+      ? "Need coffee... ;_;"
       : sleepiness > 30
         ? "Functional-ish (・_・;)"
         : "FULL POWER! ٩(ˊᗜˋ*)و";
@@ -256,7 +256,7 @@ export function SakugaSection() {
         <Tile title="sleep_mode">
           <sakuga-toggle ref={toggleRef} label="Sleep mode"></sakuga-toggle>
           <p className="text-center font-mono text-sm text-purple-700">
-            {asleep ? "> Shh... sleepyhead is resting 💤" : "> Wide awake! (for now)"}
+            {asleep ? "> Shh... sleepyhead is resting zZz" : "> Wide awake! (for now)"}
           </p>
         </Tile>
 
