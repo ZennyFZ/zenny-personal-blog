@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 import { BackgroundEffects } from "@/components/background-effects";
 import { DownloadSection } from "@/components/download-section";
-import { Card } from "@/components/ui/card";
+import { SupportedHostsPanel } from "@/components/supported-hosts-panel";
 import { Button } from "@/components/ui/button";
 import type { SparklePosition } from "@/types";
 
@@ -19,83 +19,48 @@ const sparklePositions: SparklePosition[] = [
   { x: 79, y: 82, delay: 0.7 },
 ];
 
-const supportedHosts = [
-  "YouTube",
-  "TikTok",
-  "Instagram",
-  "X (Twitter)",
-  "Vimeo",
-  "Twitch",
-  "Kick",
-  "Reddit",
-  "SoundCloud",
-  "Facebook",
-  "Dailymotion",
-  "Bilibili",
-  "Pinterest",
-  "Rumble",
-  "Streamable",
-];
-
 export default function DownloaderPage() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 py-8 sm:py-10">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200">
       <BackgroundEffects sparklePositions={sparklePositions} />
 
-      <div className="relative z-10 mx-auto max-w-2xl px-4 sm:px-6">
-        <header className="flex items-center rounded-lg border-4 border-pink-300 bg-white/80 p-3 backdrop-blur-sm pixel-shadow sm:p-4">
-          <Button
-            asChild
-            variant="outline"
-            size="sm"
-            className="border-2 border-pink-300 hover:bg-pink-100"
-          >
-            <Link href="/">
-              <ArrowLeft aria-hidden="true" className="size-4" />
-              Home
-            </Link>
-          </Button>
+      <div className="relative z-10 px-4 pb-8 pt-8 sm:p-6 sm:pt-10 md:p-8 md:pt-12">
+        <header className="mb-6 flex flex-col gap-4 rounded-lg border-4 border-pink-300 bg-white/80 p-3 backdrop-blur-sm pixel-shadow sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+          <div className="flex w-full items-center gap-3 sm:w-auto sm:gap-4">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="shrink-0 border-2 border-pink-300 hover:bg-pink-100"
+            >
+              <Link href="/" aria-label="Back to home">
+                <ArrowLeft aria-hidden="true" className="size-4" />
+                <span>Home</span>
+              </Link>
+            </Button>
+            <div className="min-w-0">
+              <h1 className="pixelated-font text-lg font-bold leading-tight text-purple-800 sm:text-2xl">
+                Video Downloader
+              </h1>
+              <p className="text-xs text-purple-600 sm:text-sm">
+                Paste a link from a video site and get a download link.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 self-start rounded-md border-2 border-pink-200 bg-white/70 px-2 py-1 sm:self-auto">
+            <Download aria-hidden="true" className="h-5 w-5 text-pink-500" />
+            <span className="pixelated-font text-xs text-purple-700 sm:text-sm">
+              Video downloads
+            </span>
+          </div>
         </header>
 
-        <section className="mt-8">
-          <div className="mb-6 text-center">
-            <h1 className="pixelated-font text-2xl font-bold text-purple-900 sm:text-3xl">
-              Download from supported sites
-            </h1>
-            <p className="mx-auto mt-3 max-w-md text-sm text-purple-800 sm:text-base">
-              Paste a link from a supported host. We’ll check it and prepare a download when the source is available.
-            </p>
-          </div>
-
-          <DownloadSection />
-
-          <Card className="mt-5 border-4 border-pink-300 bg-white/85 p-5 pixel-shadow">
-            <h2 className="pixelated-font font-bold text-purple-900">
-              Supported hosts
-            </h2>
-            <ul className="mt-3 flex flex-wrap gap-2" aria-label="Common supported hosts">
-              {supportedHosts.map((host) => (
-                <li
-                  key={host}
-                  className="rounded-md border-2 border-pink-200 bg-pink-50 px-2.5 py-1 text-sm text-purple-900"
-                >
-                  {host}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-xs text-purple-700">
-              Support depends on the individual link and the host’s availability. More sites may work too.
-            </p>
-            <a
-              href="https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-sm font-medium text-violet-800 underline underline-offset-2 hover:text-violet-950"
-            >
-              See the full yt-dlp site list
-            </a>
-          </Card>
-        </section>
+        <main className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-6 lg:grid-cols-2">
+          <section aria-label="Download a video">
+            <DownloadSection />
+          </section>
+          <SupportedHostsPanel />
+        </main>
       </div>
     </div>
   );
