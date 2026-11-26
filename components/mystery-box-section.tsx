@@ -21,6 +21,12 @@ export function MysteryBoxSection() {
         {"🎁 Mystery Box"}
       </Button>
       <Button
+        asChild
+        className="w-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white border-2 border-violet-700 pixel-shadow hover:from-violet-600 hover:to-fuchsia-600"
+      >
+        <Link href="/downloader">{"🎬 Video Downloader"}</Link>
+      </Button>
+      <Button
         className="w-full bg-gradient-to-r from-[#52c7ad] to-[#47dfd3] hover:from-[#47dfd3] hover:to-[#52c7ad] text-white border-2 border-[#47dfd3] pixel-shadow"
         onClick={() => window.location.assign("/mikutap/index.html")}
       >
