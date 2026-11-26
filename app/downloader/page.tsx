@@ -50,7 +50,7 @@ export default function DownloaderPage() {
           <div className="flex items-center gap-2 self-start rounded-md border-2 border-pink-200 bg-white/70 px-2 py-1 sm:self-auto">
             <Download aria-hidden="true" className="h-5 w-5 text-pink-500" />
             <span className="pixelated-font text-xs text-purple-700 sm:text-sm">
-              Video downloads
+              1000+ hosts supported
             </span>
           </div>
         </header>
