@@ -90,7 +90,7 @@ export function DownloadSection() {
         setPaused(false);
         setJob(await response.json());
       } else if (response.status === 400) {
-        setError("Paste a link to an individual YouTube video or Short.");
+        setError("This link isn't supported or couldn't be processed. Check the supported hosts and try another link.");
       } else if (response.status === 429) {
         setError("The downloader is busy. Try again in a minute.");
       } else {
@@ -111,13 +111,13 @@ export function DownloadSection() {
       </h2>
       <form className="space-y-3" onSubmit={handleSubmit}>
         <div className="space-y-1.5">
-          <label htmlFor="video-download-url" className="block text-sm font-medium text-violet-950">YouTube video link</label>
+          <label htmlFor="video-download-url" className="block text-sm font-medium text-violet-950">Video or post URL</label>
           <Input
             id="video-download-url"
             type="url"
             inputMode="url"
             autoComplete="off"
-            placeholder="https://youtu.be/…"
+            placeholder="Paste a link from a supported host"
             value={url}
             onChange={(event) => setUrl(event.target.value)}
             maxLength={2048}
